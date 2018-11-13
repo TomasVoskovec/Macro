@@ -7,6 +7,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+
+        <TextBox Grid.Row="0" Height="50px" VerticalAlignment="Top">1 + 1</TextBox>
+        <Label Content="null" VerticalAlignment="Center" Margin="0,20,0,0"></Label>
+        <Button Content="Calculate" Grid.Row="0" Height="25px" VerticalAlignment="Bottom"></Button>
+
     </Grid>
 </Window>
