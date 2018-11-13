@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Microsoft.CodeAnalysis.CSharp.Scripting;
+using Microsoft.CodeAnalysis.Scripting;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,18 +26,26 @@ namespace Macro
         public MainWindow()
         {
             InitializeComponent();
+            claculate();
         }
 
-        void claculate()
+        async void claculate()
         {
+            string file = File.ReadAllText(@"../../script.txt");
+
             try
             {
-                Console.WriteLine(await CSharpScript.EvaluateAsync("2+2"));
+                result.Content = await CSharpScript.EvaluateAsync(file);
             }
             catch (CompilationErrorException e)
             {
-                Console.WriteLine(string.Join(Environment.NewLine, e.Diagnostics));
+                result.Content = string.Join(Environment.NewLine, e.Diagnostics);
             }
+        }
+
+        private void calculate_click(object sender, RoutedEventArgs e)
+        {
+            //calculate();
         }
     }
 }

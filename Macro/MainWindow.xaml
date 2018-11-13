@@ -12,9 +12,8 @@
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
 
-        <TextBox Grid.Row="0" Height="50px" VerticalAlignment="Top">1 + 1</TextBox>
-        <Label Content="null" VerticalAlignment="Center" Margin="0,20,0,0"></Label>
-        <Button Content="Calculate" Grid.Row="0" Height="25px" VerticalAlignment="Bottom"></Button>
+        <Label x:Name="result" Content="null" VerticalAlignment="Center" Margin="0,20,0,0"></Label>
+        <Button Content="Calculate" Grid.Row="0" Height="25px" VerticalAlignment="Bottom" Click="calculate_click"></Button>
 
     </Grid>
 </Window>
