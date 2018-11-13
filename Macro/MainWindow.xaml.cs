@@ -24,5 +24,17 @@ namespace Macro
         {
             InitializeComponent();
         }
+
+        void claculate()
+        {
+            try
+            {
+                Console.WriteLine(await CSharpScript.EvaluateAsync("2+2"));
+            }
+            catch (CompilationErrorException e)
+            {
+                Console.WriteLine(string.Join(Environment.NewLine, e.Diagnostics));
+            }
+        }
     }
 }
