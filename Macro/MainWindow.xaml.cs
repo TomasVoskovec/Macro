@@ -1,4 +1,5 @@
-﻿using Microsoft.CodeAnalysis.CSharp.Scripting;
+﻿using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp.Scripting;
 using Microsoft.CodeAnalysis.Scripting;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,41 @@ namespace Macro
         public MainWindow()
         {
             InitializeComponent();
-            claculate();
+            peopleFromScript();
+        }
+
+        /*void createPeople()
+        {
+            people.Add(new Person("Klara"));
+            people.Add(new Person("Pavel"));
+            people.Add(new Person("Ivana"));
+            people.Add(new Person("Ivan"));
+
+            peopleFromScript();
+        }*/
+
+        async void peopleFromScript()
+        {
+            string file = File.ReadAllText(@"../../addPerson.txt");
+
+            Character character = new Character(10, 100, 25);
+
+            Globals persons = new Globals(people);
+
+            var metadata = MetadataReference.CreateFromFile(typeof(Person).Assembly.Location);
+
+            try
+            {
+                await CSharpScript.RunAsync(
+                file,
+                options: ScriptOptions.Default.WithReferences(metadata),
+                globals: persons
+                );
+            }
+            catch (CompilationErrorException e)
+            {
+                result.Content = string.Join(Environment.NewLine, e.Diagnostics);
+            }
         }
 
         async void claculate()
@@ -45,7 +80,7 @@ namespace Macro
 
         private void calculate_click(object sender, RoutedEventArgs e)
         {
-            //calculate();
+            claculate();
         }
     }
 }

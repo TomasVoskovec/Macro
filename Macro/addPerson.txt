@@ -1,0 +1,3 @@
+using Macro;
+
+Persons.Add(new Person("Radek"));
