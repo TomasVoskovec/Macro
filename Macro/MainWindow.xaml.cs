@@ -42,20 +42,22 @@ namespace Macro
 
         async void peopleFromScript()
         {
-            string file = File.ReadAllText(@"../../addPerson.txt");
+            string file = File.ReadAllText(@"../../addItemsToPerson.txt");
 
             Character character = new Character(10, 100, 25);
+            character.items.Add(new Item("Krumpáč", 5));
+            character.items.Add(new Item("Meč", 4));
 
-            Globals persons = new Globals(people);
+            Globals person = new Globals(character);
 
-            var metadata = MetadataReference.CreateFromFile(typeof(Person).Assembly.Location);
+            var metadata = MetadataReference.CreateFromFile(typeof(Character).Assembly.Location);
 
             try
             {
                 await CSharpScript.RunAsync(
                 file,
                 options: ScriptOptions.Default.WithReferences(metadata),
-                globals: persons
+                globals: person
                 );
             }
             catch (CompilationErrorException e)
