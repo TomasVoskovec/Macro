@@ -7,13 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="3*"/>
-        </Grid.RowDefinitions>
-
-        <Label x:Name="result" Content="null" VerticalAlignment="Center" Margin="0,20,0,0"></Label>
-        <Button Content="Calculate" Grid.Row="0" Height="25px" VerticalAlignment="Bottom" Click="calculate_click"></Button>
+        <StackPanel>
+            <TextBox x:Name="scriptInput" VerticalAlignment="Top" Height="200"/>
+            <Label x:Name="result" Content="null"></Label>
+        </StackPanel>
+        
+        <Button Content="Use" Height="25px" Width="250" VerticalAlignment="Bottom" Click="use_click"></Button>
 
     </Grid>
 </Window>

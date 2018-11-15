@@ -4,5 +4,5 @@ using System;
 Character.items.Add(new Item("Lopata", 2));
 foreach (Item item in Character.items)
 {
-	item.Value = item.Value * 3 / 2;
+	item.Value = item.Value * (3 / 2);
 }

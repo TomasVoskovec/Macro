@@ -27,22 +27,19 @@ namespace Macro
         public MainWindow()
         {
             InitializeComponent();
-            peopleFromScript();
+            editScript();
         }
 
-        /*void createPeople()
+        void editScript()
         {
-            people.Add(new Person("Klara"));
-            people.Add(new Person("Pavel"));
-            people.Add(new Person("Ivana"));
-            people.Add(new Person("Ivan"));
+            string script = File.ReadAllText(@"../../addItemsToPerson.txt");
 
-            peopleFromScript();
-        }*/
+            scriptInput.Text = script;
+        }
 
         async void peopleFromScript()
         {
-            string file = File.ReadAllText(@"../../addItemsToPerson.txt");
+            string script = scriptInput.Text;
 
             Character character = new Character(10, 100, 25);
             character.items.Add(new Item("Krumpáč", 5));
@@ -55,10 +52,12 @@ namespace Macro
             try
             {
                 await CSharpScript.RunAsync(
-                file,
+                script,
                 options: ScriptOptions.Default.WithReferences(metadata),
                 globals: person
                 );
+
+                result.Content = "Done!";
             }
             catch (CompilationErrorException e)
             {
@@ -80,9 +79,9 @@ namespace Macro
             }
         }
 
-        private void calculate_click(object sender, RoutedEventArgs e)
+        private void use_click(object sender, RoutedEventArgs e)
         {
-            claculate();
+            peopleFromScript();
         }
     }
 }
