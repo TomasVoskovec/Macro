@@ -28,6 +28,15 @@ namespace Macro
         {
             InitializeComponent();
             editScript();
+            loadMacros();
+        }
+
+        void loadMacros()
+        {
+            List<MacroScript> macros = new List<MacroScript>();
+            macros.Add(new MacroScript("two", "1+1"));
+
+            lvScripts.ItemsSource = macros;
         }
 
         void editScript()
@@ -82,6 +91,11 @@ namespace Macro
         private void use_click(object sender, RoutedEventArgs e)
         {
             peopleFromScript();
+        }
+
+        private void LvScripts_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //var thissdas = lvScripts.SelectedItems;
         }
     }
 }
