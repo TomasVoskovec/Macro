@@ -18,7 +18,7 @@
 
         <Label x:Name="result" Content="null" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="95" Width="792"></Label>
 
-        <ListView Margin="10,10,10,50" Name="lvScripts" Grid.Column="0" Grid.Row="1" SelectionChanged="LvScripts_SelectionChanged">
+        <ListView Margin="10,10,10,50" Name="lvScripts" Grid.Column="0" Grid.Row="1" Selected="loadScript_click">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Scripts" Width="375" DisplayMemberBinding="{Binding Name}" />

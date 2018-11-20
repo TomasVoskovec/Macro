@@ -93,9 +93,9 @@ namespace Macro
             peopleFromScript();
         }
 
-        private void LvScripts_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void loadScript_click(object sender, RoutedEventArgs e)
         {
-            //var thissdas = lvScripts.SelectedItems;
+            
         }
     }
 }
